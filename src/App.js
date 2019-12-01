@@ -4,10 +4,24 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1> Hello this is REACT my friend</h1>
-      </header>
+      <div className= "title">
+        Reminder Pro
+      </div> 
+      <div className= "form-inline">
+        <div className= "form-group">
+        <input 
+          className= "form-control"
+          placeholder= "I have to .."
+        />
+        <button 
+        type="button"
+        className= "btn btn-success"
+        >
+        Add Reminder
+        </button>
+      </div>
     </div>
+   </div> 
   );
 }
 
