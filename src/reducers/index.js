@@ -1,37 +1,26 @@
-import { ADD_REMINDER, DELETE_REMINDER, CLEAR_REMINDERS } from '../constants';
-import { bake_cookie, read_cookie } from 'sfcookies';
+import { ADD_REMINDER } from '../constants';
 
+
+//helper reminder function
 const reminder = (action) => {
-  let { text, dueDate } = action;
   return {
-    id: Math.random(),
-    text,
-    dueDate
+    text: action.text,
+    id: Math.random()
+    
   }
 }
 
-const removeById = (state = [], id) => {
-  const reminders = state.filter(reminder => reminder.id !== id);
-  console.log('new reduced reminders', reminders);
-  return reminders;
-}
-
+// reducer as a constant 
+// two parameters state with an empty array and action parameter that takes an argument
 const reminders = (state = [], action) => {
+  // this will be modify to become a return state
   let reminders = null;
-  state = read_cookie('reminders');
   switch(action.type) {
     case ADD_REMINDER:
+      // keep in mind the reminder helper fn above dor the code below
       reminders = [...state, reminder(action)];
-      bake_cookie('reminders', reminders);
-      return reminders;
-    case DELETE_REMINDER:
-      reminders = removeById(state, action.id);
-      bake_cookie('reminders', reminders);
-      return reminders;
-    case CLEAR_REMINDERS:
-      reminders = [];
-      bake_cookie('reminders', reminders);
-      return reminders;
+     console.log("reminders as state", reminders);
+     return reminder;
     default:
       return state;
   }

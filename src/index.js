@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import { createStore } from 'redux';
-import reducer from './reducers';
+//initializing the store, provider component will pass the store to the whole app
+import { Provider } from 'react-redux';
+import reducer from './reducers/index';
 
 //ReactDOM.render(<App />, document.getElementById('root'));
 
